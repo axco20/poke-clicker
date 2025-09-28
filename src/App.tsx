@@ -1,24 +1,10 @@
-import { Routes, Route } from "react-router-dom";
-import Home from "./pages/login";
-import Dashboard from "./pages/dashboard";
-import { ProtectedRoute } from "./components/ProtectedRoute";
+import { AnimatedRoutes } from "./components/AnimatedRoutes";
 
 function App() {
   return (
     <div className="App">
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route
-          path="/dashboard"
-          element={
-            <ProtectedRoute>
-              <Dashboard />
-            </ProtectedRoute>
-          }
-        />
-      </Routes>
+      <AnimatedRoutes />
     </div>
   );
 }
-
 export default App;
