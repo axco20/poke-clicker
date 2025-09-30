@@ -30,7 +30,7 @@ export function AnimatedRoutes() {
   const location = useLocation();
 
   return (
-    <div className="bg-black min-h-screen">
+    <div className="bg-black min-h-screen overflow-x-hidden overflow-y-hidden">
       <AnimatePresence mode="wait">
         <Routes location={location} key={location.pathname}>
           <Route

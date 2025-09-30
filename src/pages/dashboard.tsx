@@ -1,18 +1,40 @@
-import background from "@/assets/background.gif";
+import PokeballClicker from "@/components/PokeballClicker";
 import { TopBanner } from "@/components/TopBanner";
+import { motion } from "framer-motion";
+import { useState } from "react";
 
-function Dashboard() {
+const tabs = ["Shop", "Upgrades", "Collection", "Stats"]
+
+
+export function Dashboard() {
+  const [active, setActive] = useState("Shop")
   return (
     <div
-      style={{ backgroundImage: `url(${background})` }}
-      className="h-screen bg-cover bg-center bg-no-repeat  w-full text-white gap-8"
+      className="h-screen bg-slate-800 w-full text-white flex flex-col overflow-x-hidden"
     >
       <TopBanner />
-      <div className="flex w-full">
-        <div className="w-[35%] border flex justify-center items-start pt-5">
-          hello
+      <div className="flex w-full flex-1">
+        <PokeballClicker/>
+        <div className="w-[65%] border-l-10 border-black/90">
+          <div className="w-full h-[10%] flex overflow-x-hidden bg-black/30">
+              {tabs.map((tab) => (
+            <button
+              key={tab}
+              onClick={() => setActive(tab)}
+              className="relative flex-1 px-2 py-3 text-white font-press text-3xl font-medium text-center cursor-pointer hover:text-white/60"
+            >
+            {tab}
+            {active === tab && (
+              <motion.div
+                layoutId="underline"
+                className="absolute bottom-0 left-0 right-0 h-[4px] bg-red-500"
+                transition={{ type: "spring", stiffness: 500, damping: 30 }}
+              />
+            )}
+            </button>
+            ))}
+          </div>
         </div>
-        <div className="w-[65%] border min-h-screen">hello</div>
       </div>
     </div>
   );
